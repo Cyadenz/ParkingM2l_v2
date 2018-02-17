@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -8,76 +6,77 @@
                 <div class="panel-heading">Register</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
-                        {{ csrf_field() }}
+                    <form class="form-horizontal" method="POST" action="<?php echo e(route('register')); ?>">
+                        <?php echo e(csrf_field()); ?>
 
-                        <div class="form-group{{ $errors->has('nom') ? ' has-error' : '' }}">
+
+                        <div class="form-group<?php echo e($errors->has('nom') ? ' has-error' : ''); ?>">
                             <label for="nom" class="col-md-4 control-label">nom</label>
 
                             <div class="col-md-6">
-                                <input id="nom" type="text" class="form-control" name="nom" value="{{ old('nom') }}" required autofocus>
+                                <input id="nom" type="text" class="form-control" name="nom" value="<?php echo e(old('nom')); ?>" required autofocus>
 
-                                @if ($errors->has('nom'))
+                                <?php if($errors->has('nom')): ?>
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('nom') }}</strong>
+                                        <strong><?php echo e($errors->first('nom')); ?></strong>
                                     </span>
-                                @endif
+                                <?php endif; ?>
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('prenom') ? ' has-error' : '' }}">
+                        <div class="form-group<?php echo e($errors->has('prenom') ? ' has-error' : ''); ?>">
                             <label for="prenom" class="col-md-4 control-label">prenom</label>
 
                             <div class="col-md-6">
-                                <input id="prenom" type="text" class="form-control" name="prenom" value="{{ old('prenom') }}" required autofocus>
+                                <input id="prenom" type="text" class="form-control" name="prenom" value="<?php echo e(old('prenom')); ?>" required autofocus>
 
-                                @if ($errors->has('prenom'))
+                                <?php if($errors->has('prenom')): ?>
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('prenom') }}</strong>
+                                        <strong><?php echo e($errors->first('prenom')); ?></strong>
                                     </span>
-                                @endif
+                                <?php endif; ?>
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <div class="form-group<?php echo e($errors->has('email') ? ' has-error' : ''); ?>">
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                                <input id="email" type="email" class="form-control" name="email" value="<?php echo e(old('email')); ?>" required>
 
-                                @if ($errors->has('email'))
+                                <?php if($errors->has('email')): ?>
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong><?php echo e($errors->first('email')); ?></strong>
                                     </span>
-                                @endif
+                                <?php endif; ?>
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('telephone') ? ' has-error' : '' }}">
+                        <div class="form-group<?php echo e($errors->has('telephone') ? ' has-error' : ''); ?>">
                             <label for="telephone" class="col-md-4 control-label">Téléphone</label>
 
                             <div class="col-md-6">
-                                <input id="telephone" type="telephone" class="form-control" name="telephone" value="{{ old('telephone') }}" required>
+                                <input id="telephone" type="telephone" class="form-control" name="telephone" value="<?php echo e(old('telephone')); ?>" required>
 
-                                @if ($errors->has('telephone'))
+                                <?php if($errors->has('telephone')): ?>
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('telephone') }}</strong>
+                                        <strong><?php echo e($errors->first('telephone')); ?></strong>
                                     </span>
-                                @endif
+                                <?php endif; ?>
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                        <div class="form-group<?php echo e($errors->has('password') ? ' has-error' : ''); ?>">
                             <label for="password" class="col-md-4 control-label">Password</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control" name="password" required>
 
-                                @if ($errors->has('password'))
+                                <?php if($errors->has('password')): ?>
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
+                                        <strong><?php echo e($errors->first('password')); ?></strong>
                                     </span>
-                                @endif
+                                <?php endif; ?>
                             </div>
                         </div>
 
@@ -102,4 +101,6 @@
         </div>
     </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

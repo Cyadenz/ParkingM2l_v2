@@ -54,40 +54,42 @@
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
             <!-- Authentication Links -->
-              @guest
-                <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Se connecter</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">S'enregistrer</a></li>
-              @else
+              <?php if(auth()->guard()->guest()): ?>
+                <li class="nav-item"><a class="nav-link" href="<?php echo e(route('login')); ?>">Se connecter</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?php echo e(route('register')); ?>">S'enregistrer</a></li>
+              <?php else: ?>
                 <li class="nav-item dropdown">
                   <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                    {{ Auth::user()->nom }} {{ Auth::user()->prenom }}
+                    <?php echo e(Auth::user()->nom); ?> <?php echo e(Auth::user()->prenom); ?>
+
                   </a>
                   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
                     <li>
-                      <a class="dropdown-item" href="{{ route('home') }}"> 
+                      <a class="dropdown-item" href="<?php echo e(route('home')); ?>"> 
                         <i class="fa fa-user fa-fw" aria-hidden="true"></i>&nbsp;Mon profil
                       </a>
 
-                      @if(Auth::user()->admin)
+                      <?php if(Auth::user()->admin): ?>
 
-                      <a class="dropdown-item" href="{{ route('aDashboard') }}"> 
+                      <a class="dropdown-item" href="<?php echo e(route('aDashboard')); ?>"> 
                         <i class="fa fa-cog fa-fw" aria-hidden="true"></i>&nbsp;Administration
                       </a>
                       
-                      @endif
+                      <?php endif; ?>
 
-                      <a class="dropdown-item" href="{{ route('logout') }}"
+                      <a class="dropdown-item" href="<?php echo e(route('logout')); ?>"
                           onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
                                     <i class="fa fa-sign-out fa-fw"></i>&nbsp;Se déconnecter
                       </a>
-                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        {{ csrf_field() }}
+                      <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
+                        <?php echo e(csrf_field()); ?>
+
                       </form>
                     </li>
                   </ul>
                 </li>
-              @endguest   
+              <?php endif; ?>   
             </li>
           </ul>
         </div>  
@@ -111,7 +113,7 @@
       </div>
     </header>
 
-    @yield('content')
+    <?php echo $__env->yieldContent('content'); ?>
 
     <!-- Footer -->
     <footer>

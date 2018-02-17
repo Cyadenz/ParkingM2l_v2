@@ -1,6 +1,4 @@
-@extends('layouts.default')
-
-@section('content') 
+<?php $__env->startSection('content'); ?> 
 	<!-- Main Content -->
     <div class="container">
       <div class="row">
@@ -67,4 +65,6 @@
     </div>
 
     <hr>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

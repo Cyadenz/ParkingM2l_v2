@@ -23,6 +23,16 @@ Route::get('/register2', function () {
     return view('auth.register2');
 });
 
+//Routes Admin
+Route::get('/aDashboard', 'adminController@index')->name('aDashboard');
+Route::get('/aUtilisateurs', 'adminController@Util')->name('aUtils');
+
+Route::get('/aUtilisateur/{id}', 'adminController@UtilSelect')->name('aUtilSelect');
+Route::post('/aUtilisateur/{id}','adminController@UtilStore')->name('aUtilStore');
+
+Route::get('/aUtilisateurSupp/{id}','adminController@UtilSupp')->name('aUtilSupp');
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
