@@ -18,6 +18,11 @@ Route::get('/laravel', function () {
 Route::get('/', function () {
     return view('index');
 });
+
+Route::get('/register2', function () {
+    return view('auth.register2');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
