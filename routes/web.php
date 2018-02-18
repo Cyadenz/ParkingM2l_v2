@@ -32,6 +32,12 @@ Route::post('/aUtilisateur/{id}','adminController@UtilStore')->name('aUtilStore'
 
 Route::get('/aUtilisateurSupp/{id}','adminController@UtilSupp')->name('aUtilSupp');
 
+//Routes Reserv
+Route::get('/rDashboard', 'reservController@index')->name('rDashboard');
+Route::get('/rPlaces', 'reservController@show')->name('rPlaces');
+
+Route::get('/rPlace/{idplace}', 'reservController@reserv')->name('rPlace');
+Route::get('/rPlaceSupp/{idplace}', 'reservController@reservSupp')->name('rPlaceSupp');
 
 Auth::routes();
 
