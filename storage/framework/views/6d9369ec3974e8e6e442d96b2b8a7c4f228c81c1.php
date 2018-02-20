@@ -22,6 +22,7 @@
 
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
 
@@ -36,7 +37,7 @@ Administration
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
 
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="/adminDashboard">
+          <a class="nav-link" href="/aDashboard">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">Dashboard</span>
           </a>
@@ -203,15 +204,17 @@ Administration
       </ol>
       <!-- Icon Cards-->
       <div class="row">
+
         <div class="col-xl-3 col-sm-6 mb-3">
           <div class="card text-white bg-primary o-hidden h-100">
             <div class="card-body">
               <div class="card-body-icon">
-                <i class="fa fa-envelope" aria-hidden="true"></i>
+                <!-- <i class="fa fa-envelope" aria-hidden="true"></i> -->
+                <i class="fa fa-user" aria-hidden="true"></i>
               </div>
-              <div class="mr-5">10 Nouveau(x) devis !</div>
+              <div class="mr-5">Gestion des Utilisateurs.</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="/adminDevis">
+            <a class="card-footer text-white clearfix small z-1" href="/aUtilisateurs">
               <span class="float-left">Voir les détails</span>
               <span class="float-right">
               </span>
@@ -224,9 +227,9 @@ Administration
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-comments"></i>
               </div>
-              <div class="mr-5">10 Nouvelle(s) demande(s) !</div>
+              <div class="mr-5">Liste des réservations.</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="/adminContact">
+            <a class="card-footer text-white clearfix small z-1" href="/aReservations">
               <span class="float-left">Voir les détails</span>
               <span class="float-right">
               </span>

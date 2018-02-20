@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\User;
+use App\Places;
+use App\Reservations;
 use Auth;
 use DB;
 use App\Quotation;
@@ -20,73 +22,6 @@ class adminController extends Controller
     {
         return view('admin.dashboard');
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
     public function Util()
     {
         $utils = user::all();
@@ -129,5 +64,27 @@ class adminController extends Controller
     ]);
         return redirect()->route('aUtils')
             ->with('status', 'Le profil à été mis à jour !');
+    }
+
+    public function Reserv()
+    {
+        $reservs = reservations::all();
+        // $utils = DB::table('users')->whereNotNull('idPlaceReserve')->get();
+
+        $utils = user::all();
+        return view('admin.reservations' , compact('reservs', 'utils'));
+    }
+
+    public function ReservSupp($id_place)
+    {
+        DB::table('reservations')->where('id_place', $id_place)->delete();
+
+        // $idfdp = DB::table('places')->select('idUserReserve')->where('idplace', $id_place)->get();
+        // DB::table('users')->where('id', $idfdp)->update(['idPlaceReserve' => null]);
+
+        DB::table('places')->where('idplace', $id_place)->update(['reserver' => 0,'idUserReserve' => null]);
+
+        return redirect()->route('aReservs')
+        ->with('status', 'Suppresion éffectuée avec succès');
     }
 }
