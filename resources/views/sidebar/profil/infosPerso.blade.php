@@ -7,8 +7,21 @@
         <div class="col-lg-8 col-md-10 mx-auto">
         <h1><i class="fa fa-info-circle"></i> Mes informations</h1>
         <hr>
+
+		@if (session('status') && session('status') != 'Suppresion éffectuée avec succès')
+            <div class="alert alert-success alert-block">
+              <button type="button" class="close" data-dismiss="alert">×</button> 
+              <strong><i class="fa fa-check"></i> {{(session('status'))}}</strong>
+            </div>
+          @elseif(session('status') && session('status') == 'Suppresion éffectuée avec succès')
+            <div class="alert alert-danger alert-block">
+              <button type="button" class="close" data-dismiss="alert">×</button> 
+              <strong><i class="fa fa-check"></i> {{(session('status'))}}</strong>
+              </div>
+          @endif
+
         <br/>
-        <form name="sentMessage" id="contactForm" class="form-horizontal" method="POST" action="{{ route('home') }}">
+        <form name="sentMessage" id="contactForm" class="form-horizontal" method="POST" action="{{ route('sMesInfosVal') }}">
             {{ csrf_field() }}
           <div class="form-group floating-label-form-group controls">
             <div class="form-row">
@@ -59,7 +72,7 @@
               <div class="post-preview">
                 <p class="post-meta">Téléphone</p>
               </div>
-                <input type="text" id="telephone" name="telephone" class="form-control" value="0{{$user->telephone}}" required>
+                <input type="text" id="telephone" name="telephone" class="form-control" value="{{$user->telephone}}" required>
                 @if ($errors->has('telephone'))
                     <span class="help-block">
                         <strong>{{ $errors->first('telephone') }}</strong>
@@ -74,7 +87,7 @@
             <div class="form-row">
               <div class="col-md-6{{ $errors->has('password') ? ' has-error' : '' }}">
               <div class="post-preview">
-                <p class="post-meta">Mot de passe</p>
+                <p class="post-meta">Nouveau mot de passe</p>
               </div>
 
                 <input type="password" id="password" name="password" class="form-control" placeholder="Entrer votre mot de passe" required>
@@ -96,10 +109,12 @@
           </div><br/>
             <br>
             <div id="success"></div>
-            <div class="form-group">
+            <div class="form-group">     
+              <a class="btn btn-primary float-left" href="/sMonProfil">&cularr; Retour</a>      
               <button type="submit" class="btn btn-primary float-right" id="sendMessageButton">Modifier&rarr;</button>
             </div>
           </form>
+
 
           <!-- Pager -->
         </div>

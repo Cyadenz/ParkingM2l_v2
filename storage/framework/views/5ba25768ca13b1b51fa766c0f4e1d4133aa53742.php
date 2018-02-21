@@ -8,7 +8,7 @@
         <div class="col-lg-8 col-md-10 mx-auto">
 
           <div class="post-preview">
-            <a href="post.html">
+            <a>
               <h2 class="post-title">
                 <i class="fa fa-chevron-right" style="color: red"></i> Vous souhaitez réserver une place dans le Parking de la M2L ?
               </h2>
@@ -21,9 +21,10 @@
           </div>
           </div>
           <hr>
+          <a class="btn btn-primary float-left" href="/">&cularr; Retour</a>
 
 <!--           <div class="post-preview">
-            <a href="post.html">
+            <a>
               <h2 class="post-title">
                 <i class="fa fa-chevron-right" style="color: red"></i> Vous souhaitez réserver une place dans le Parking de la M2L ?
               </h2>
@@ -38,7 +39,7 @@
           <hr>
 
           <div class="post-preview">
-            <a href="post.html">
+            <a>
               <h2 class="post-title">
                <i class="fa fa-chevron-right" style="color: red"></i> Vous souhaitez réserver une place dans le Parking de la M2L ?
               </h2>

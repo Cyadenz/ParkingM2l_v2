@@ -7,7 +7,7 @@
         <hr>
         <br/>
           <div class="post-preview">
-            <a href="post.html">
+            <a>
               <h2 class="post-title">
                 <i class="fa fa-chevron-right" style="color: red"></i> Afficher mes réservations
               </h2>
@@ -22,7 +22,7 @@
           <hr>
 
           <div class="post-preview">
-            <a href="post.html">
+            <a>
               <h2 class="post-title">
                 <i class="fa fa-chevron-right" style="color: red"></i> Afficher mon rang dans la file d'attente
               </h2>
@@ -31,13 +31,13 @@
               </h3>
             </a>
           <div class="clearfix">
-            <a class="btn btn-primary float-right" href="#">Mon rang&rarr;</a>
+            <a class="btn btn-primary float-right" href="/sMonRang">Mon rang&rarr;</a>
           </div>
           </div>
           <hr>
 
           <div class="post-preview">
-            <a href="post.html">
+            <a>
               <h2 class="post-title">
                <i class="fa fa-chevron-right" style="color: red"></i> Modifier mes informations personnelles
               </h2>
@@ -46,11 +46,11 @@
               </h3>
             </a>
           <div class="clearfix">
-            <a class="btn btn-primary float-right" href="#">Mes informations&rarr;</a>
+            <a class="btn btn-primary float-right" href="/sMesInfos">Mes informations&rarr;</a>
           </div>
           </div>
           <hr>
-
+          <a class="btn btn-primary float-left" href="/">&cularr; Retour</a>
           <!-- Pager -->
         </div>
       </div>

@@ -7,7 +7,7 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="post-preview">
-            <a href="post.html">
+            <a>
               <h3 class="post-subtitle">
                 Vous êtes sur le point de reserver la place numéro : {{$place[0]->idplace}}.
               </h3>
@@ -51,6 +51,7 @@
             <div id="success"></div>
             <div class="form-group">
               <button type="submit" class="btn btn-primary float-right" id="sendMessageButton">Réserver&rarr;</button>
+              <a class="btn btn-primary float-left" href="/rPlaces">&cularr; Retour</a>
             </div>
           </form>
 

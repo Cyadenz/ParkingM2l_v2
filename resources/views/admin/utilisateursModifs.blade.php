@@ -88,7 +88,7 @@
               <div class="col-md-6{{ $errors->has('telephone') ? ' has-error' : '' }}">
                 <label for="telephone" class="control-label">Téléphone</label>
 
-                    <input id="telephone" type="telephone" class="form-control" name="telephone" value="0{{$user->telephone}}" required>
+                    <input id="telephone" type="telephone" class="form-control" name="telephone" value="{{$user->telephone}}" required>
                     @if ($errors->has('telephone'))
                         <span class="help-block">
                             <strong>{{ $errors->first('telephone') }}</strong>

@@ -86,7 +86,7 @@
               <div class="col-md-6<?php echo e($errors->has('telephone') ? ' has-error' : ''); ?>">
                 <label for="telephone" class="control-label">Téléphone</label>
 
-                    <input id="telephone" type="telephone" class="form-control" name="telephone" value="0<?php echo e($user->telephone); ?>" required>
+                    <input id="telephone" type="telephone" class="form-control" name="telephone" value="<?php echo e($user->telephone); ?>" required>
                     <?php if($errors->has('telephone')): ?>
                         <span class="help-block">
                             <strong><?php echo e($errors->first('telephone')); ?></strong>

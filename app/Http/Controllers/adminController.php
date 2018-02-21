@@ -36,8 +36,11 @@ class adminController extends Controller
 
     public function UtilSupp($id)
     {
-        $MembSup = user::findOrFail($id);
-        $MembSup->delete();
+        DB::table('places')->where('idUserReserve', $id)->update(['reserver' => 0, 'idPlaceReserve' => null]);
+
+        DB::table('reservations')->where('id_users', $id)->delete();
+
+        user::findOrFail($id)->delete();
 
         return redirect()->route('aUtils')
         ->with('status', 'Suppresion éffectuée avec succès');
@@ -49,7 +52,7 @@ class adminController extends Controller
             'nom' => 'required|string|max:255',
             'prenom' => 'required|string|max:100',
             'email' => 'required|string|email|max:255',
-            'telephone' => 'required|numeric',
+            'telephone' => 'required|numeric|phone',
             'password' => 'required|string|min:6|confirmed',
             'admin' => 'required|boolean',
         ]);
@@ -96,4 +99,35 @@ class adminController extends Controller
         return redirect()->route('aReservs')
         ->with('status', 'Suppresion éffectuée avec succès');
     }
+
+    public function Places()
+    {
+        $places = places::all();
+
+        return view('admin.places' , compact('places'));
+    }
+
+    public function PlacesCreate()
+    {
+        $idMax = DB::table('places')->max('idplace');
+        $idMax++;
+    DB::table('places')->insert(
+    ['idplace' => $idMax, 'numplace' => $idMax, 'reserver' => 0, 'idUserReserve' => NULL]
+    );
+
+        return redirect()->route('aPlaces')
+        ->with('status', 'Place crée avec succès');
+    }
+
+    public function PlacesSupp($idplace)
+    {
+        DB::table('users')->where('idPlaceReserve', $idplace)->update(['idPlaceReserve' => null]);
+
+        DB::table('reservations')->where('id_place', $idplace)->delete();
+
+        DB::table('places')->where('idplace', $idplace)->delete();
+
+        return redirect()->route('aPlaces')
+        ->with('status', 'Suppresion éffectuée avec succès');
+    } 
 }

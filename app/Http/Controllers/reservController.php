@@ -81,4 +81,19 @@ class reservController extends Controller
         return redirect()->route('rPlaces')
             ->with('status', 'Vous avez réservé la place'); 
     }
+
+    public function rangPlus()
+    {   
+        // $user = user::findorFail(Auth::user()->id);
+
+        $nbrRang = DB::table('users')->whereNotNull('rang')->count();
+        $nbrRang++;
+
+        DB::table('users')
+        ->where('id', Auth::user()->id)
+        ->update(['rang' => $nbrRang]);
+
+       return redirect()->route('sRang')
+            ->with('status', 'Vous avez été placé sur liste d attente');  
+    }
 }

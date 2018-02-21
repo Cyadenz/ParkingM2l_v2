@@ -35,6 +35,12 @@ class SidebarController extends Controller
         return view('sidebar.profil.infosPerso', compact('user'));
     }
 
+    public function monRang()
+    {
+        $nbrRang = DB::table('users')->whereNotNull('rang')->count();
+        return view('sidebar.profil.monRang', compact('nbrRang'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -43,7 +49,24 @@ class SidebarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nom' => 'required|string|max:100',
+            'prenom' => 'required|string|max:100',
+            'email' => 'required|string|email|max:150',
+            'telephone' => 'required|numeric|phone',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+        $user = User::findorFail(Auth::user()->id);
+        $user -> update([
+            'nom' => $request->nom,
+            'prenom' => $request->prenom,
+            'email' => $request->email,
+            'telephone' => $request->telephone,
+            'password' => bcrypt($request->password),
+        ]);
+
+        return redirect()->route('sMesInfos')
+            ->with('status', 'Vos informations ont bien été modifiées');
     }
 
     /**

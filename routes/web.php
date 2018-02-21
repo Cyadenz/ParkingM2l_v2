@@ -35,9 +35,19 @@ Route::get('/aReservations', 'adminController@Reserv')->name('aReservs');
 Route::get('/aaReservationVal/{id_place}','adminController@ReservVal')->name('aReservVal');
 Route::get('/aaReservationSupp/{id_place}','adminController@ReservSupp')->name('aReservSupp');
 
+Route::get('/aPlaces', 'adminController@Places')->name('aPlaces');
+Route::get('/aPlaceCreate', 'adminController@PlacesCreate')->name('aPlaceCreate');
+Route::get('/aPlace/{idplace}','adminController@PlacesSupp')->name('aPlaceSupp');
+
 //Routes Sidebar
 Route::get('/sMonProfil', 'SidebarController@profil')->name('sProfil');
+
 Route::get('/sMesInfos', 'SidebarController@mesInfos')->name('sMesInfos');
+Route::post('/sMesInfos', 'SidebarController@store')->name('sMesInfosVal');
+
+Route::get('/sMonRang', 'SidebarController@monRang')->name('sRang');
+
+Route::get('/sRangPlus', 'reservController@rangPlus')->name('sRangPlus');
 
 //Routes Reserv
 Route::get('/rDashboard', 'reservController@index')->name('rDashboard');

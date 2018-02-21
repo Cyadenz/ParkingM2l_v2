@@ -10,10 +10,10 @@
       <div class="row">
         <div class="col-lg-12 col-md-10 mx-auto">
 
-          <?php if(!$nbrplacesR == 0): ?>
+          <?php if(!$nbrplacesR == 0 && is_null(Auth::user()->rang)): ?>
             <div class="alert alert-warning alert-block">
               <button type="button" class="close" data-dismiss="alert">×</button> 
-              <strong>Il semblerait que toutes les places soient prises voulez vous passer en liste d'attente ? Si oui cliquer ici</strong>
+              <strong>Il semblerait que toutes les places soient prises voulez-vous passer en liste d'attente ? Si oui cliquer <a href="/sRangPlus">ici</a></strong>
             </div>
           <?php endif; ?>
 
@@ -77,7 +77,10 @@
               </div>
           <?php endif; ?>
           </div>
+ 
           </div>
+          <a class="btn btn-primary float-left" href="/rDashboard">&cularr; Retour</a>
           </div>
+
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
