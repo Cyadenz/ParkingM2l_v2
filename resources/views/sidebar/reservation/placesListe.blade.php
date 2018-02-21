@@ -15,7 +15,7 @@
           @if (!$nbrplacesR == 0)
             <div class="alert alert-warning alert-block">
               <button type="button" class="close" data-dismiss="alert">×</button> 
-              <strong>Il semblerait que toutes les places soient prises voulez vous passer en liste d'attente ?</strong>
+              <strong>Il semblerait que toutes les places soient prises voulez vous passer en liste d'attente ? Si oui cliquer ici</strong>
             </div>
           @endif
 

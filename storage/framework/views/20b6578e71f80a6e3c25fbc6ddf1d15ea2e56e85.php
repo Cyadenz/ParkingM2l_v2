@@ -24,6 +24,8 @@
     <!-- Datatable-->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"/>
 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
   </head>
 
   <body>
@@ -68,7 +70,7 @@
                   </a>
                   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
                     <li>
-                      <a class="dropdown-item" href="<?php echo e(route('home')); ?>"> 
+                      <a class="dropdown-item" href="<?php echo e(route('sProfil')); ?>"> 
                         <i class="fa fa-user fa-fw" aria-hidden="true"></i>&nbsp;Mon profil
                       </a>
 

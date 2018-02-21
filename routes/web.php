@@ -32,8 +32,12 @@ Route::post('/aUtilisateur/{id}','adminController@UtilStore')->name('aUtilStore'
 Route::get('/aUtilisateurSupp/{id}','adminController@UtilSupp')->name('aUtilSupp');
 
 Route::get('/aReservations', 'adminController@Reserv')->name('aReservs');
-
+Route::get('/aaReservationVal/{id_place}','adminController@ReservVal')->name('aReservVal');
 Route::get('/aaReservationSupp/{id_place}','adminController@ReservSupp')->name('aReservSupp');
+
+//Routes Sidebar
+Route::get('/sMonProfil', 'SidebarController@profil')->name('sProfil');
+Route::get('/sMesInfos', 'SidebarController@mesInfos')->name('sMesInfos');
 
 //Routes Reserv
 Route::get('/rDashboard', 'reservController@index')->name('rDashboard');
@@ -45,10 +49,6 @@ Route::get('/rPlaceSupp/{idplace}', 'reservController@reservSupp')->name('rPlace
 
 Route::get('/rPlaceSelect/{idplace}', 'reservController@placeSelect')->name('rPlaceSelect');
 
-//Routes Sidebar
-Route::get('/about', function () {
-    return view('sidebar.about');
-});
 
 Auth::routes();
 

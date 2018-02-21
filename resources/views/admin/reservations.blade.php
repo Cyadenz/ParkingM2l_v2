@@ -22,6 +22,7 @@
                   <th>Numéro place</th>
                   <th>Date de début</th>
                   <th>Date de fin</th>
+                  <th>Valider</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -33,6 +34,7 @@
                   <th>Numéro place</th>
                   <th>Date de début</th>
                   <th>Date de fin</th>
+                  <th>Valider</th>
                   <th>Actions</th>
                 </tr>
               </tfoot>
@@ -46,8 +48,15 @@
                   <td>{{$reserv->id_place}}</td>
                   <td>{{$reserv->debutperiode}}</td>
                   <td>{{$reserv->finperiode}}</td>
+                  @if($reserv->valider)
+                    <td>Oui</td>
+                  @else
+                    <td>Non</td>
+                  @endif
                   <td>
-                      <a href="{{ route('home') }}" class="btn btn-primary btn-xs"><i class="fa fa-check"></i></a>
+                    @if(!$reserv->valider)
+                      <a href="{{ route('aReservVal', $reserv->id_place) }}" class="btn btn-primary btn-xs"><i class="fa fa-check"></i></a>
+                    @endif
                       <a href="{{ route('aReservSupp', $reserv->id_place) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
                   </td>
                 </tr>

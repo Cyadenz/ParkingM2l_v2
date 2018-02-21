@@ -20,6 +20,7 @@
                   <th>Numéro place</th>
                   <th>Date de début</th>
                   <th>Date de fin</th>
+                  <th>Valider</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -31,6 +32,7 @@
                   <th>Numéro place</th>
                   <th>Date de début</th>
                   <th>Date de fin</th>
+                  <th>Valider</th>
                   <th>Actions</th>
                 </tr>
               </tfoot>
@@ -44,8 +46,15 @@
                   <td><?php echo e($reserv->id_place); ?></td>
                   <td><?php echo e($reserv->debutperiode); ?></td>
                   <td><?php echo e($reserv->finperiode); ?></td>
+                  <?php if($reserv->valider): ?>
+                    <td>Oui</td>
+                  <?php else: ?>
+                    <td>Non</td>
+                  <?php endif; ?>
                   <td>
-                      <a href="<?php echo e(route('home')); ?>" class="btn btn-primary btn-xs"><i class="fa fa-check"></i></a>
+                    <?php if(!$reserv->valider): ?>
+                      <a href="<?php echo e(route('aReservVal', $reserv->id_place)); ?>" class="btn btn-primary btn-xs"><i class="fa fa-check"></i></a>
+                    <?php endif; ?>
                       <a href="<?php echo e(route('aReservSupp', $reserv->id_place)); ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
                   </td>
                 </tr>

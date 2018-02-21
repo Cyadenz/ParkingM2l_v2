@@ -162,7 +162,7 @@ Administration
                   </a>
                   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
                     <li>
-                      <a class="dropdown-item" href="{{ route('home') }}"> 
+                      <a class="dropdown-item" href="{{ route('sProfil') }}"> 
                         <i class="fa fa-user fa-fw" aria-hidden="true"></i>&nbsp;Mon profil
                       </a>
                       @if(Auth::user()->admin)

@@ -75,14 +75,23 @@ class adminController extends Controller
         return view('admin.reservations' , compact('reservs', 'utils'));
     }
 
+    public function ReservVal($id_place)
+    {
+        DB::table('reservations')->where('id_place', $id_place)->update(['valider' => 1]);
+
+        return redirect()->route('aReservs')
+        ->with('status', 'La place à bien été validé !');
+    }
+
     public function ReservSupp($id_place)
     {
-        DB::table('reservations')->where('id_place', $id_place)->delete();
-
-        // $idfdp = DB::table('places')->select('idUserReserve')->where('idplace', $id_place)->get();
-        // DB::table('users')->where('id', $idfdp)->update(['idPlaceReserve' => null]);
+        $id = DB::table('places')->select('idUserReserve')->where('idplace', $id_place)->get();
 
         DB::table('places')->where('idplace', $id_place)->update(['reserver' => 0,'idUserReserve' => null]);
+        
+        DB::table('users')->where('id', $id[0]->idUserReserve)->update(['idPlaceReserve' => null]);
+
+        DB::table('reservations')->where('id_place', $id_place)->delete();
 
         return redirect()->route('aReservs')
         ->with('status', 'Suppresion éffectuée avec succès');
