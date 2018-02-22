@@ -10,15 +10,29 @@
                         <?php echo e(csrf_field()); ?>
 
 
-                        <div class="form-group<?php echo e($errors->has('name') ? ' has-error' : ''); ?>">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+                        <div class="form-group<?php echo e($errors->has('nom') ? ' has-error' : ''); ?>">
+                            <label for="nom" class="col-md-4 control-label">nom</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="<?php echo e(old('name')); ?>" required autofocus>
+                                <input id="nom" type="text" class="form-control" name="nom" value="<?php echo e(old('nom')); ?>" required autofocus>
 
-                                <?php if($errors->has('name')): ?>
+                                <?php if($errors->has('nom')): ?>
                                     <span class="help-block">
-                                        <strong><?php echo e($errors->first('name')); ?></strong>
+                                        <strong><?php echo e($errors->first('nom')); ?></strong>
+                                    </span>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group<?php echo e($errors->has('prenom') ? ' has-error' : ''); ?>">
+                            <label for="prenom" class="col-md-4 control-label">prenom</label>
+
+                            <div class="col-md-6">
+                                <input id="prenom" type="text" class="form-control" name="prenom" value="<?php echo e(old('prenom')); ?>" required autofocus>
+
+                                <?php if($errors->has('prenom')): ?>
+                                    <span class="help-block">
+                                        <strong><?php echo e($errors->first('prenom')); ?></strong>
                                     </span>
                                 <?php endif; ?>
                             </div>
@@ -33,6 +47,20 @@
                                 <?php if($errors->has('email')): ?>
                                     <span class="help-block">
                                         <strong><?php echo e($errors->first('email')); ?></strong>
+                                    </span>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group<?php echo e($errors->has('telephone') ? ' has-error' : ''); ?>">
+                            <label for="telephone" class="col-md-4 control-label">Téléphone</label>
+
+                            <div class="col-md-6">
+                                <input id="telephone" type="telephone" class="form-control" name="telephone" value="<?php echo e(old('telephone')); ?>" required>
+
+                                <?php if($errors->has('telephone')): ?>
+                                    <span class="help-block">
+                                        <strong><?php echo e($errors->first('telephone')); ?></strong>
                                     </span>
                                 <?php endif; ?>
                             </div>

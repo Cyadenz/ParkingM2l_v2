@@ -12,7 +12,7 @@
       <div class="row">
         <div class="col-lg-12 col-md-10 mx-auto">
 
-          @if (!$nbrplacesR == 0 && is_null(Auth::user()->rang))
+          @if ($nbrplacesR == 0 && is_null(Auth::user()->rang))
             <div class="alert alert-warning alert-block">
               <button type="button" class="close" data-dismiss="alert">×</button> 
               <strong>Il semblerait que toutes les places soient prises voulez-vous passer en liste d'attente ? Si oui cliquer <a href="/sRangPlus">ici</a></strong>

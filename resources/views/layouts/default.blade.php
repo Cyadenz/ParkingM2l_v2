@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Clean Blog - Start Bootstrap Theme</title>
+    <title>Parking de la M2L</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
@@ -106,7 +106,7 @@
             <div class="site-heading">
               <h1>Parking de la M2L</h1>
               <hr style="background-color: white">
-              <span class="subheading">A Blog Theme by Start Bootstrap</span>
+              <span class="subheading">...</span>
             </div>
           </div>
         </div>

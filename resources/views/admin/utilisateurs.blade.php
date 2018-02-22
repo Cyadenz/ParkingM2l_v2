@@ -44,7 +44,7 @@
                   <td>{{$util->nom}}</td>
                   <td>{{$util->prenom}}</td>
                   <td>{{$util->email}}</td>
-                  <td>0{{$util->telephone}}</td>
+                  <td>{{$util->telephone}}</td>
                   @if($util->admin)
                   <td>Oui</td>
                   @else
