@@ -19,6 +19,9 @@ class CreatePlacesTable extends Migration
             $table->boolean('reserver')->default(false);
 
             $table->integer('idUserReserve')->nullable();
+
+            $table->rememberToken();
+            $table->timestamps();
         });
 
     DB::table('places')->insert([
@@ -31,7 +34,6 @@ class CreatePlacesTable extends Migration
     ['idplace' => 7, 'numplace' => 7, 'reserver' => 0, 'idUserReserve' => NULL],
     ['idplace' => 8, 'numplace' => 8, 'reserver' => 0, 'idUserReserve' => NULL],
     ['idplace' => 9, 'numplace' => 9, 'reserver' => 0, 'idUserReserve' => NULL],
-    ['idplace' => 10, 'numplace' => 10, 'reserver' => 0, 'idUserReserve' => NULL]
     ]);
     
     }

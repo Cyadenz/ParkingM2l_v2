@@ -20,6 +20,9 @@ class CreateReservationsTable extends Migration
             $table->integer('id_place')->unsigned()->foreign('id_place')->references('idplace')->on('places');
             $table->primary(array('id_users', 'id_place', 'debutperiode'));
             $table->boolean('valider')->default(0);
+
+            $table->rememberToken();
+            $table->timestamps();
         });
     }
 

@@ -1,6 +1,6 @@
 <?php $__env->startSection('content'); ?>
 
-  <ol class="breadcrumb">
+      <ol class="breadcrumb">
         <li class="breadcrumb-item">
           <a href="#">Réservations</a>
         </li>
@@ -44,8 +44,18 @@
                   <td><?php echo e($utils[(($reserv->id_users)-1)]->prenom); ?></td>
                   <td><?php echo e($utils[(($reserv->id_users)-1)]->email); ?></td>
                   <td><?php echo e($reserv->id_place); ?></td>
-                  <td><?php echo e($reserv->debutperiode); ?></td>
-                  <td><?php echo e($reserv->finperiode); ?></td>
+                  <?php if($reserv->debutperiode == '1998-10-10'): ?>
+                    <td><em>Non attribuée</em></td>
+                  <?php else: ?>
+                    <td><?php echo e($reserv->debutperiode); ?></td>
+                  <?php endif; ?>
+
+                  <?php if($reserv->finperiode == '1998-10-10'): ?>
+                    <td><em>Non attribuée</em></td>
+                  <?php else: ?>
+                    <td><?php echo e($reserv->finperiode); ?></td>
+                  <?php endif; ?>
+
                   <?php if($reserv->valider): ?>
                     <td>Oui</td>
                   <?php else: ?>
@@ -53,7 +63,7 @@
                   <?php endif; ?>
                   <td>
                     <?php if(!$reserv->valider): ?>
-                      <a href="<?php echo e(route('aReservVal', $reserv->id_place)); ?>" class="btn btn-primary btn-xs"><i class="fa fa-check"></i></a>
+                      <a href="<?php echo e(route('aReservValidation', $reserv->id_place)); ?>" class="btn btn-primary btn-xs"><i class="fa fa-check"></i></a>
                     <?php endif; ?>
                       <a href="<?php echo e(route('aReservSupp', $reserv->id_place)); ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
                   </td>
@@ -63,7 +73,7 @@
             </table>
           </div>
         </div>
-        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        <div class="card-footer small text-muted">Dernière mise à jour le : <?php echo e($updated); ?></div>
       </div>
           <?php if(session('status') && session('status') != 'Suppresion éffectuée avec succès'): ?>
             <div class="alert alert-success alert-block">

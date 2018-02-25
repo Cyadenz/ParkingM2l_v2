@@ -19,6 +19,28 @@ class SidebarController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function index()
+    {
+        // $nbrplacesDispo = DB::table('places')->where('reserver', 0)->count();
+        // $nbrRang = DB::table('users')->whereNotNull('rang')->count();
+
+        // if ($nbrplacesDispo != 0) 
+        // {
+        //     $i=0;
+        //     while ($i != $nbrplacesDispo &&  $nbrRang != 0) 
+        //     {
+        //         $RangMin = DB::table('users')->select('id')->whereNotNull('rang')->min('rang');
+
+        //         DB::table('users')->where('id', $RangMin)->update(['rang' => NULL]);
+
+        //         $i++;
+        //         $nbrRang--;
+        //     }
+        // }
+
+        return view('index');
+    }
+
     public function profil()
     {
         return view('sidebar.profil.profil');

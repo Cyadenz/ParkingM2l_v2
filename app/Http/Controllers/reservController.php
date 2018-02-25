@@ -28,20 +28,46 @@ class reservController extends Controller
         return view('sidebar.reservation.placesListe',compact('places', 'nbrplacesR'));    
     }
 
-    public function reserv($idplace)
+    public function reserve()
     {
         $idAuth = Auth::user()->id;
-        DB::table('places')
-        ->where('idplace', $idplace)
-        ->update(['reserver' => 1,'idUserReserve' => $idAuth]);
+        $nbrplacesR = DB::table('places')->where('reserver', 0)->count();
 
-        DB::table('users')->where('id', $idAuth)->update(['idPlaceReserve' => $idplace]);
+        if ($nbrplacesR != 0) 
+        {
+            $place = DB::table('places')->select('idplace')->where('reserver', 0)->inRandomOrder()->first();
 
-        DB::table('reservations')->insert(['finperiode' => '1998-10-10', 'id_users' => $idAuth, 'id_place' => $idplace, 'debutperiode' => '1998-10-10', 'valider' => 0]);
+            DB::table('places')->where('idplace', $place->idplace)->update(['reserver' => 1,'idUserReserve' => $idAuth]);
 
-        return redirect()->route('rPlaces')
-            ->with('status', 'Vous avez réservé la place');
+            DB::table('users')->where('id', $idAuth)->update(['idPlaceReserve' => $place->idplace]);
+
+            DB::table('reservations')->insert(['finperiode' => '1998-10-10', 'id_users' => $idAuth, 'id_place' => $place->idplace, 'debutperiode' => '1998-10-10', 'valider' => 0]);
+
+            return redirect()->route('rPlaces')
+                ->with('status', 'Vous avez réservé une place');
+        }       
+        else
+            {
+                return redirect()->route('Accueil');
+                // ->with('status', 'Vous avez réservé la place');
+            }
+
     }
+
+    // public function reserv($idplace)
+    // {
+    //     $idAuth = Auth::user()->id;
+    //     DB::table('places')
+    //     ->where('idplace', $idplace)
+    //     ->update(['reserver' => 1,'idUserReserve' => $idAuth]);
+
+    //     DB::table('users')->where('id', $idAuth)->update(['idPlaceReserve' => $idplace]);
+
+    //     DB::table('reservations')->insert(['finperiode' => '1998-10-10', 'id_users' => $idAuth, 'id_place' => $idplace, 'debutperiode' => '1998-10-10', 'valider' => 0]);
+
+    //     return redirect()->route('rPlaces')
+    //         ->with('status', 'Vous avez réservé la place');
+    // }
 
     public function reservSupp(Request $request, $idplace)
     {

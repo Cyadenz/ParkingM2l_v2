@@ -25,7 +25,10 @@ class adminController extends Controller
     public function Util()
     {
         $utils = user::all();
-        return view('admin.utilisateurs' , compact('utils'));
+
+        $updated = DB::table('users')->select('updated_at')->max('updated_at');
+
+        return view('admin.utilisateurs' , compact('utils', 'updated'));
     }
 
     public function UtilSelect($id)
@@ -72,18 +75,32 @@ class adminController extends Controller
     public function Reserv()
     {
         $reservs = reservations::all();
-        // $utils = DB::table('users')->whereNotNull('idPlaceReserve')->get();
-
         $utils = user::all();
-        return view('admin.reservations' , compact('reservs', 'utils'));
+        $updated = DB::table('reservations')->select('updated_at')->max('updated_at');
+
+        return view('admin.reservations' , compact('reservs', 'utils' ,'updated'));
     }
 
-    public function ReservVal($id_place)
+    public function ReservValidation($id_place)
     {
-        DB::table('reservations')->where('id_place', $id_place)->update(['valider' => 1]);
+        $reservation = DB::table('reservations')->where('id_place', $id_place)->get();
+
+        return view('admin.reservationVal' , compact('reservation'));
+    }
+
+    public function Reservstore(Request $request, $id_place)
+    {
+        $this->validate($request, [
+            'debutperiode' => 'required|date',
+            'finperiode' => 'required|date',
+        ]);
+
+        DB::table('reservations')
+            ->where('id_place', $id_place)
+            ->update(['finperiode' => $request->finperiode, 'debutperiode' => $request->debutperiode, 'valider' => 1]);
 
         return redirect()->route('aReservs')
-        ->with('status', 'La place à bien été validé !');
+        ->with('status', 'Les dates ont bien étés assignées !'); 
     }
 
     public function ReservSupp($id_place)
@@ -103,8 +120,9 @@ class adminController extends Controller
     public function Places()
     {
         $places = places::all();
+        $updated = DB::table('places')->select('updated_at')->max('updated_at');
 
-        return view('admin.places' , compact('places'));
+        return view('admin.places' , compact('places', 'updated'));
     }
 
     public function PlacesCreate()

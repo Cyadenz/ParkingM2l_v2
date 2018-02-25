@@ -52,16 +52,7 @@ Administration
               <a href="/">Accueil</a>
             </li>
             <li>
-              <a href="/apropos">À propos</a>
-            </li>
-            <li>
-              <a href="/services">Nos services</a>
-            </li>
-            <li>
-              <a href="/devis">Devis</a>
-            </li>
-            <li>
-              <a href="/contacter">Nous contacter</a>
+              <a href="/rDashboard">Réservation</a>
             </li>
           </ul>
         </li>
@@ -73,16 +64,13 @@ Administration
           </a>
           <ul class="sidenav-second-level collapse" id="collapseExamplePages">
             <li>
-              <a href="/adminUtilisateurs">Utilisateurs</a>
+              <a href="/aUtilisateurs">Utilisateurs</a>
             </li>
             <li>
-              <a href="/adminDevis">Devis</a>
+              <a href="/aPlaces">Places</a>
             </li>
             <li>
-              <a href="/adminContact">Demandes</a>
-            </li>
-            <li>
-              <a href="blank.html">Informations diverses</a>
+              <a href="/aReservations">Réservations</a>
             </li>
           </ul>
         </li>

@@ -2,7 +2,7 @@
 
 @section('content')
 
-  <ol class="breadcrumb">
+      <ol class="breadcrumb">
         <li class="breadcrumb-item">
           <a href="#">Réservations</a>
         </li>
@@ -46,8 +46,18 @@
                   <td>{{$utils[(($reserv->id_users)-1)]->prenom}}</td>
                   <td>{{$utils[(($reserv->id_users)-1)]->email}}</td>
                   <td>{{$reserv->id_place}}</td>
-                  <td>{{$reserv->debutperiode}}</td>
-                  <td>{{$reserv->finperiode}}</td>
+                  @if($reserv->debutperiode == '1998-10-10')
+                    <td><em>Non attribuée</em></td>
+                  @else
+                    <td>{{$reserv->debutperiode}}</td>
+                  @endif
+
+                  @if($reserv->finperiode == '1998-10-10')
+                    <td><em>Non attribuée</em></td>
+                  @else
+                    <td>{{$reserv->finperiode}}</td>
+                  @endif
+
                   @if($reserv->valider)
                     <td>Oui</td>
                   @else
@@ -55,7 +65,7 @@
                   @endif
                   <td>
                     @if(!$reserv->valider)
-                      <a href="{{ route('aReservVal', $reserv->id_place) }}" class="btn btn-primary btn-xs"><i class="fa fa-check"></i></a>
+                      <a href="{{ route('aReservValidation', $reserv->id_place) }}" class="btn btn-primary btn-xs"><i class="fa fa-check"></i></a>
                     @endif
                       <a href="{{ route('aReservSupp', $reserv->id_place) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
                   </td>
@@ -65,7 +75,7 @@
             </table>
           </div>
         </div>
-        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        <div class="card-footer small text-muted">Dernière mise à jour le : {{$updated}}</div>
       </div>
           @if (session('status') && session('status') != 'Suppresion éffectuée avec succès')
             <div class="alert alert-success alert-block">

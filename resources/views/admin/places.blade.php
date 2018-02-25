@@ -59,7 +59,7 @@
             </table>
           </div>
         </div>
-        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        <div class="card-footer small text-muted">Dernière mise à jour le : {{$updated}}</div>
       </div>
           @if (session('status') && session('status') != 'Suppresion éffectuée avec succès')
             <div class="alert alert-success alert-block">

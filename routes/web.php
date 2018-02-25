@@ -15,10 +15,6 @@ Route::get('/laravel', function () {
     return view('welcome');
 });
 
-Route::get('/', function () {
-    return view('index');
-});
-
 Route::get('/test', function () {
     return view('sidebar.reservation.placeReserv');
 });
@@ -32,7 +28,10 @@ Route::post('/aUtilisateur/{id}','adminController@UtilStore')->name('aUtilStore'
 Route::get('/aUtilisateurSupp/{id}','adminController@UtilSupp')->name('aUtilSupp');
 
 Route::get('/aReservations', 'adminController@Reserv')->name('aReservs');
-Route::get('/aaReservationVal/{id_place}','adminController@ReservVal')->name('aReservVal');
+
+Route::get('/aReservationValidation/{id_place}','adminController@ReservValidation')->name('aReservValidation');
+Route::post('/aReservation/{id_place}','adminController@Reservstore')->name('aReservstore');
+
 Route::get('/aaReservationSupp/{id_place}','adminController@ReservSupp')->name('aReservSupp');
 
 Route::get('/aPlaces', 'adminController@Places')->name('aPlaces');
@@ -40,6 +39,8 @@ Route::get('/aPlaceCreate', 'adminController@PlacesCreate')->name('aPlaceCreate'
 Route::get('/aPlace/{idplace}','adminController@PlacesSupp')->name('aPlaceSupp');
 
 //Routes Sidebar
+Route::get('/', 'SidebarController@index')->name('Accueil');
+
 Route::get('/sMonProfil', 'SidebarController@profil')->name('sProfil');
 
 Route::get('/sMesInfos', 'SidebarController@mesInfos')->name('sMesInfos');
@@ -52,6 +53,8 @@ Route::get('/sRangPlus', 'reservController@rangPlus')->name('sRangPlus');
 //Routes Reserv
 Route::get('/rDashboard', 'reservController@index')->name('rDashboard');
 Route::get('/rPlaces', 'reservController@show')->name('rPlaces');
+
+Route::get('/rTest', 'reservController@reserve')->name('rTest');
 
 Route::post('/rPlace/{idplace}', 'reservController@store')->name('rPlace');
 

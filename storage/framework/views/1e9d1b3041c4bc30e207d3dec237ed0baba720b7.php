@@ -18,6 +18,7 @@
                   <th>Prénom</th>
                   <th>Email</th>
                   <th>Téléphone</th>
+                  <th>Inscrit le</th>
                   <th>Administrateur</th>
                   <th>Actions</th>
                 </tr>
@@ -29,6 +30,7 @@
                   <th>Prénom</th>
                   <th>Email</th>
                   <th>Téléphone</th>
+                  <th>Inscrit le</th>
                   <th>Administrateur</th>
                   <th>Actions</th>
                 </tr>
@@ -41,7 +43,8 @@
                   <td><?php echo e($util->nom); ?></td>
                   <td><?php echo e($util->prenom); ?></td>
                   <td><?php echo e($util->email); ?></td>
-                  <td>0<?php echo e($util->telephone); ?></td>
+                  <td><?php echo e($util->telephone); ?></td>
+                  <td><?php echo e($util->created_at); ?></td>
                   <?php if($util->admin): ?>
                   <td>Oui</td>
                   <?php else: ?>
@@ -57,7 +60,7 @@
             </table>
           </div>
         </div>
-        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        <div class="card-footer small text-muted">Dernière mise à jour le : <?php echo e($updated); ?></div>
       </div>
           <?php if(session('status') && session('status') != 'Suppresion éffectuée avec succès'): ?>
             <div class="alert alert-success alert-block">
