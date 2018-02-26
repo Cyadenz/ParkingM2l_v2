@@ -15,10 +15,6 @@ Route::get('/laravel', function () {
     return view('welcome');
 });
 
-Route::get('/test', function () {
-    return view('sidebar.reservation.placeReserv');
-});
-
 //Routes Admin
 Route::get('/aDashboard', 'adminController@index')->name('aDashboard');
 Route::get('/aUtilisateurs', 'adminController@Util')->name('aUtils');

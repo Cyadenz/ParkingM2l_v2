@@ -1,20 +1,19 @@
-<?php $__env->startSection('content'); ?>
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
+<?php $__env->startSection('content'); ?> 
 
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="<?php echo e(route('login')); ?>">
+   <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <h4><i class="fa fa-user"></i> Connexion</h4>
+          <br />
+					<form class="form-horizontal" method="POST" action="<?php echo e(route('login')); ?>">
                         <?php echo e(csrf_field()); ?>
 
 
-                        <div class="form-group<?php echo e($errors->has('email') ? ' has-error' : ''); ?>">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                        <div class="form-group floating-label-form-group controls<?php echo e($errors->has('email') ? ' has-error' : ''); ?>">
+                            <label for="email" class="col-md-4 control-label">Adresse Email</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="<?php echo e(old('email')); ?>" required autofocus>
+                                <input id="email" type="email" class="form-control" placeholder="Adresse Email" name="email" value="<?php echo e(old('email')); ?>" required autofocus>
 
                                 <?php if($errors->has('email')): ?>
                                     <span class="help-block">
@@ -22,13 +21,13 @@
                                     </span>
                                 <?php endif; ?>
                             </div>
-                        </div>
+                        </div><br/>
 
-                        <div class="form-group<?php echo e($errors->has('password') ? ' has-error' : ''); ?>">
-                            <label for="password" class="col-md-4 control-label">Password</label>
+                        <div class="form-group floating-label-form-group controls<?php echo e($errors->has('password') ? ' has-error' : ''); ?>">
+                            <label for="password" class="col-md-4 control-label">Mot de passe</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
+                                <input id="password" type="password" class="form-control" placeholder="Mot de passe" name="password" required>
 
                                 <?php if($errors->has('password')): ?>
                                     <span class="help-block">
@@ -37,7 +36,7 @@
                                 <?php endif; ?>
                             </div>
                         </div>
-
+                        <br/><br/>
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <div class="checkbox">
@@ -49,22 +48,24 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
-
+                            <center><div class="col-md-8 col-md-offset-4">
                                 <a class="btn btn-link" href="<?php echo e(route('password.request')); ?>">
-                                    Forgot Your Password?
+                                    Mot de passe oublié?
                                 </a>
-                            </div>
+
+                                <button type="submit" class="btn btn-primary">
+                                    Login&rarr;
+                                </button>
+                                
+                            </center></div>
                         </div>
                     </form>
-                </div>
-            </div>
+
         </div>
+      </div>
     </div>
-</div>
+
+    <hr>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('layouts.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

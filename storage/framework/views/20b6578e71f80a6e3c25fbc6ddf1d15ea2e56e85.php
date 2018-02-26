@@ -100,7 +100,7 @@
     </nav>
 
     <!-- Page Header -->
-    <header class="masthead" style="background-image: url('/img/Parking.jpg')">
+    <header class="masthead" style="background-image: url('/img/Parking2.png')">
       <div class="overlay"></div>
       <div class="container">
         <div class="row">

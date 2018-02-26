@@ -1,21 +1,20 @@
-@extends('layouts.app')
+@extends('layouts.default')
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
+@section('content') 
 
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+   <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <h4><i class="fa fa-user"></i> Connexion</h4>
+          <br />
+					<form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                        <div class="form-group floating-label-form-group controls{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label for="email" class="col-md-4 control-label">Adresse Email</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+                                <input id="email" type="email" class="form-control" placeholder="Adresse Email" name="email" value="{{ old('email') }}" required autofocus>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -23,13 +22,13 @@
                                     </span>
                                 @endif
                             </div>
-                        </div>
+                        </div><br/>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
+                        <div class="form-group floating-label-form-group controls{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <label for="password" class="col-md-4 control-label">Mot de passe</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
+                                <input id="password" type="password" class="form-control" placeholder="Mot de passe" name="password" required>
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -38,7 +37,7 @@
                                 @endif
                             </div>
                         </div>
-
+                        <br/><br/>
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <div class="checkbox">
@@ -50,20 +49,22 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
-
+                            <center><div class="col-md-8 col-md-offset-4">
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
+                                    Mot de passe oublié?
                                 </a>
-                            </div>
+
+                                <button type="submit" class="btn btn-primary">
+                                    Login&rarr;
+                                </button>
+                                
+                            </center></div>
                         </div>
                     </form>
-                </div>
-            </div>
+
         </div>
+      </div>
     </div>
-</div>
+
+    <hr>
 @endsection
