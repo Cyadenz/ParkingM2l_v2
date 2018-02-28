@@ -91,8 +91,8 @@ class adminController extends Controller
     public function Reservstore(Request $request, $id_place)
     {
         $this->validate($request, [
-            'debutperiode' => 'required|date',
-            'finperiode' => 'required|date',
+            'debutperiode' => 'required|date|after:today',
+            'finperiode' => 'required|date|after:tomorrow|after_or_equal:debutperiode',
         ]);
 
         DB::table('reservations')
@@ -148,4 +148,12 @@ class adminController extends Controller
         return redirect()->route('aPlaces')
         ->with('status', 'Suppresion éffectuée avec succès');
     } 
+
+    public function FileAttente()
+    {
+        $users = DB::table('users')->whereNotNull('rang')->get();
+        $updated = DB::table('users')->select('updated_at')->max('updated_at');
+
+        return view('admin.fileAttente' , compact('users', 'updated'));
+    }
 }

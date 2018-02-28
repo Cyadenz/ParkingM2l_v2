@@ -214,7 +214,7 @@ Administration
               <div class="card-body-icon">
                 <i class="fa fa-h-square"></i>
               </div>
-              <div class="mr-5">Gestion des places disponibles</div>
+              <div class="mr-5">Gestion des places disponibles.</div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="/aPlaces">
               <span class="float-left">Voir les détails</span>
@@ -238,21 +238,21 @@ Administration
             </a>
           </div>
         </div>
-<!--         <div class="col-xl-3 col-sm-6 mb-3">
+        <div class="col-xl-3 col-sm-6 mb-3">
           <div class="card text-white bg-danger o-hidden h-100">
             <div class="card-body">
               <div class="card-body-icon">
-                <i class="fa fa-user" aria-hidden="true"></i>
+                <i class="fa fa-clock-o"></i>
               </div>
-              <div class="mr-5">Gestion des Utilisateurs</div>
+              <div class="mr-5">Gestion de la file d'attente</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="/aUtilisateurs">
+            <a class="card-footer text-white clearfix small z-1" href="/aFileAttente">
               <span class="float-left">Voir les détails</span>
               <span class="float-right">
               </span>
             </a>
           </div>
-        </div> -->
+        </div>
       </div>
     @yield('content')
   </div>

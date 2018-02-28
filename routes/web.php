@@ -34,6 +34,8 @@ Route::get('/aPlaces', 'adminController@Places')->name('aPlaces');
 Route::get('/aPlaceCreate', 'adminController@PlacesCreate')->name('aPlaceCreate');
 Route::get('/aPlace/{idplace}','adminController@PlacesSupp')->name('aPlaceSupp');
 
+Route::get('/aFileAttente', 'adminController@FileAttente')->name('aFileAttente');
+
 //Routes Sidebar
 Route::get('/', 'SidebarController@index')->name('Accueil');
 

@@ -21,6 +21,26 @@ class SidebarController extends Controller
      */
     public function index()
     {
+
+        //Fin de réservation
+        $reservations = DB::table('reservations')->whereDate('finperiode', '=', date('Y-m-d'))->get();
+        if (count($reservations) != 0) 
+        {
+            $id_users = DB::table('reservations')->select('id_users')->whereDate('finperiode', '=', date('Y-m-d'))->get();
+            $id_place = DB::table('reservations')->select('id_place')->whereDate('finperiode', '=', date('Y-m-d'))->get();
+
+            DB::table('reservations')->whereDate('finperiode', '=', date('Y-m-d'))->delete();
+
+                $x=0;
+                while ($x != count($id_users) ) 
+                {
+                    DB::table('places')->where('idplace', $id_place[$x]->id_place)->update(['reserver' => 0,'idUserReserve' => NULL]);
+                    DB::table('users')->where('id',  $id_users[$x]->id_users)->update(['idPlaceReserve' => NULL]);
+                    $x++;
+                }
+        }
+
+
         //File d'attente
         $nbrplacesDispo = DB::table('places')->where('reserver', 0)->count();
         $nbrRang = DB::table('users')->whereNotNull('rang')->count();
@@ -50,7 +70,7 @@ class SidebarController extends Controller
 
                 $i++;
                 $nbrRang--;
-            }
+            }  
         }
 
         return view('index');
