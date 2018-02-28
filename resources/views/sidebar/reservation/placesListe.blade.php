@@ -15,7 +15,12 @@
           @if ($nbrplacesR == 0 && is_null(Auth::user()->rang) && is_null(Auth::user()->idPlaceReserve))
             <div class="alert alert-warning alert-block">
               <button type="button" class="close" data-dismiss="alert">×</button> 
-              <strong>Il semblerait que toutes les places soient prises voulez-vous passer en liste d'attente ? Si oui cliquer <a href="/sRangPlus">ici</a></strong>
+              <strong>Il semblerait que toutes les places soient prises, voulez-vous passer en liste d'attente ? Dès qu'une place sera disponible elle vous sera automatiquement assignée, si oui cliquer <a href="/sRangPlus">ici</a></strong>
+            </div>
+          @elseif(!is_null(Auth::user()->idPlaceReserve))
+            <div class="alert alert-warning alert-block">
+              <button type="button" class="close" data-dismiss="alert">×</button> 
+              <strong>Vous avez déjà réservé une place ! Vous ne pouvez pas en réserver une autre.</a></strong>
             </div>
           @endif
 
@@ -72,7 +77,7 @@
  
           </div>
             <a class="btn btn-primary float-left" href="/rDashboard">&cularr; Retour</a>
-            @if (Auth::user()->idPlaceReserve == NULL)
+            @if (Auth::user()->idPlaceReserve == NULL && $nbrplacesR != 0)
               <a class="btn btn-primary float-right" href="/rTest">&cularr; Réserver</a>
             @endif
           </div>

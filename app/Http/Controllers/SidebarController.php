@@ -21,22 +21,37 @@ class SidebarController extends Controller
      */
     public function index()
     {
-        // $nbrplacesDispo = DB::table('places')->where('reserver', 0)->count();
-        // $nbrRang = DB::table('users')->whereNotNull('rang')->count();
+        //File d'attente
+        $nbrplacesDispo = DB::table('places')->where('reserver', 0)->count();
+        $nbrRang = DB::table('users')->whereNotNull('rang')->count();
 
-        // if ($nbrplacesDispo != 0) 
-        // {
-        //     $i=0;
-        //     while ($i != $nbrplacesDispo &&  $nbrRang != 0) 
-        //     {
-        //         $RangMin = DB::table('users')->select('id')->whereNotNull('rang')->min('rang');
+        if ($nbrplacesDispo != 0) 
+        {
+            $i=0;
+            while ($i != $nbrplacesDispo &&  $nbrRang != 0) 
+            {
+                $RangMin = DB::table('users')->select('id')->whereNotNull('rang')->min('rang');
 
-        //         DB::table('users')->where('id', $RangMin)->update(['rang' => NULL]);
+                $user = DB::table('users')->where('rang', $RangMin)->get();
 
-        //         $i++;
-        //         $nbrRang--;
-        //     }
-        // }
+                DB::table('users')->where('id', $user[0]->id)->update(['rang' => NULL]);
+
+                $placeAlea = DB::table('places')->select('idplace')->where('reserver', 0)->inRandomOrder()->first();
+
+                DB::table('places')->where('idplace', $placeAlea->idplace)->update(['reserver' => 1,'idUserReserve' => $user[0]->id]);
+
+                DB::table('users')->where('id', $user[0]->id)->update(['idPlaceReserve' => $placeAlea->idplace]);
+
+                DB::table('reservations')->insert(['finperiode' => '1998-10-10', 'id_users' => $user[0]->id, 'id_place' => $placeAlea->idplace, 'debutperiode' => '1998-10-10', 'valider' => 0]);
+
+                $nbrRangFor = DB::table('users')->whereNotNull('rang')->count();
+
+                DB::table('users')->whereNotNull('rang')->decrement('rang');
+
+                $i++;
+                $nbrRang--;
+            }
+        }
 
         return view('index');
     }
