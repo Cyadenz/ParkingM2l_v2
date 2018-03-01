@@ -35,6 +35,10 @@ Route::get('/aPlaceCreate', 'adminController@PlacesCreate')->name('aPlaceCreate'
 Route::get('/aPlace/{idplace}','adminController@PlacesSupp')->name('aPlaceSupp');
 
 Route::get('/aFileAttente', 'adminController@FileAttente')->name('aFileAttente');
+Route::get('/aUpFileAttente/{id}', 'adminController@up')->name('aUpFileAttente');
+Route::get('/aDownFileAttente/{id}', 'adminController@down')->name('aDownFileAttente');
+Route::get('/aSuppFileAttente/{id}', 'adminController@ListASupp')->name('aListASupp');
+
 
 //Routes Sidebar
 Route::get('/', 'SidebarController@index')->name('Accueil');

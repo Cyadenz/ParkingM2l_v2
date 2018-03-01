@@ -38,8 +38,13 @@
                   <td>{{$user->nom}}</td>
                   <td>{{$user->prenom}}</td>
                   <td>
-                      <a href="{{ route('home') }}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
-                      <a href="{{ route('home') }}" class="btn btn-success btn-xs"><i class="fa fa-plus"></i></a>
+                    @if($user->rang != 1 )
+                      <a href="{{ route('aUpFileAttente', $user->id) }}" class="btn btn-success btn-xs"><i class="fa fa-arrow-up"></i></a>
+                    @endif
+                    @if($user->rang != $users->max('rang') )
+                      <a href="{{ route('aDownFileAttente', $user->id) }}" class="btn btn-danger btn-xs"><i class="fa fa-arrow-down"></i></a>
+                    @endif
+                      <a href="{{ route('aListASupp', $user->id) }}" class="btn btn-dark btn-xs"><i class="fa fa-trash-o "></i></a>
                   </td>
                 </tr>
               @endforeach
@@ -50,15 +55,20 @@
         </div>
         <div class="card-footer small text-muted">Dernière mise à jour le : {{$updated}}</div>
       </div>
-          @if (session('status') && session('status') != 'Suppresion éffectuée avec succès')
-            <div class="alert alert-success alert-block">
-              <button type="button" class="close" data-dismiss="alert">×</button> 
-              <strong><i class="fa fa-check"></i> {{(session('status'))}}</strong>
-            </div>
-          @elseif(session('status') && session('status') == 'Suppresion éffectuée avec succès')
+          @if(session('status') && session('status') == 'Suppression éffectuée avec succès')
             <div class="alert alert-danger alert-block">
               <button type="button" class="close" data-dismiss="alert">×</button> 
-              <strong><i class="fa fa-check"></i> {{(session('status'))}}</strong>
+              <strong><i class="fa fa-times"></i> {{(session('status'))}}</strong>
+              </div>
+          @elseif (session('status') && session('status') != 'Rang augmenté de 1')
+            <div class="alert alert-success alert-block">
+              <button type="button" class="close" data-dismiss="alert">×</button> 
+              <strong><i class="fa fa-arrow-up"></i> {{(session('status'))}}</strong>
+            </div>
+          @elseif(session('status') && session('status') == 'Rang augmenté de 1')
+            <div class="alert alert-danger alert-block">
+              <button type="button" class="close" data-dismiss="alert">×</button> 
+              <strong><i class="fa fa-arrow-down"></i> {{(session('status'))}}</strong>
               </div>
           @endif
 @endsection

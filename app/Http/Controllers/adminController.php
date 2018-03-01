@@ -156,4 +156,36 @@ class adminController extends Controller
 
         return view('admin.fileAttente' , compact('users', 'updated'));
     }
+
+    public function up($id)
+    {
+        $rangId = DB::table('users')->select('rang')->where('id', $id)->get();
+
+        DB::table('users')->where('rang', (($rangId[0]->rang)-1) )->increment('rang');
+        DB::table('users')->where('id', $id)->decrement('rang');
+
+
+       return redirect()->route('aFileAttente')
+        ->with('status', 'Rang réduit de 1');
+    }
+
+    public function down($id)
+    {
+       $rangId = DB::table('users')->select('rang')->where('id', $id)->get();
+
+        DB::table('users')->where('rang', (($rangId[0]->rang)+1) )->decrement('rang');
+        DB::table('users')->where('id', $id)->increment('rang');
+
+
+
+       return redirect()->route('aFileAttente')
+        ->with('status', 'Rang augmenté de 1');
+    }
+    public function ListASupp($id)
+    {    
+        DB::table('users')->where('id', $id)->update(['rang' => null]);
+
+        return redirect()->route('aFileAttente')
+         ->with('status', 'Suppression éffectuée avec succès');
+    }
 }
