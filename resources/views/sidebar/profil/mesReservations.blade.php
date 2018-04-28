@@ -5,7 +5,7 @@
 	<div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-        <h1><i class="fa fa-clock-o"></i> Mon rang</h1>
+        <h1><i class="fa fa-clock-o"></i> Mes réservations</h1>
         <hr>
         <br/>
           @if (session('status') && session('status') != 'Suppresion éffectuée avec succès')
@@ -23,11 +23,23 @@
         <div class="post-preview">
             <a>
               <h3 class="post-subtitle">
-                Votre rang sur la file d'attente est actuellement : {{Auth::user()->rang}} sur {{$nbrRang}} personne(s).</h3>
+                @if( Auth::user()-> idPlaceReserve == null)
+                  Vous n'avez pas réservée de place.
+                @else
+
+                  Votre place réservée est la place numéro : {{Auth::user()->idPlaceReserve}}.<br /><br />
+
+                  @if(isset($reserv[0]))
+                    Cette place vous a été attributé du {{$reserv[0]->debutperiode}} au {{$reserv[0]->finperiode}}.
+                  @else
+                    Cette place n' a pas encore été attribué par l'administrateur.  
+                  @endif
+
+                @endif
+              </h3>
             </a>
         </div><br/>
          <a class="btn btn-primary float-left" href="/sMonProfil">&cularr; Retour</a> 
-         <a class="btn btn-primary float-right" href="/">Actualiser &olarr;</a> 
 
           <!-- Pager -->
         </div>

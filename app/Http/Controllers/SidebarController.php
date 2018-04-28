@@ -98,6 +98,14 @@ class SidebarController extends Controller
         return view('sidebar.profil.monRang', compact('nbrRang'));
     }
 
+    public function mesReservations()
+    {
+        $idR = Auth::user()->idPlaceReserve;
+        $reserv = DB::table('reservations')->where('id_place', $idR)->where('valider', 1)->get();
+
+        return view('sidebar.profil.mesReservations', compact('reserv'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *

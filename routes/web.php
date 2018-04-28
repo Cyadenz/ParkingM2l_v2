@@ -52,6 +52,8 @@ Route::get('/sMonRang', 'SidebarController@monRang')->name('sRang');
 
 Route::get('/sRangPlus', 'reservController@rangPlus')->name('sRangPlus');
 
+Route::get('/sMesReservations', 'SidebarController@mesReservations')->name('sMesReserv');
+
 //Routes Reserv
 Route::get('/rDashboard', 'reservController@index')->name('rDashboard');
 Route::get('/rPlaces', 'reservController@show')->name('rPlaces');

@@ -18,7 +18,7 @@
           <?php elseif(!is_null(Auth::user()->idPlaceReserve)): ?>
             <div class="alert alert-warning alert-block">
               <button type="button" class="close" data-dismiss="alert">×</button> 
-              <strong>Vous avez déjà réservé une place ! Vous ne pouvez pas en réserver une autre.</a></strong>
+              <strong>Vous avez réservé une place ! Vous ne pouvez pas en réserver une autre.</a></strong>
             </div>
           <?php endif; ?>
 

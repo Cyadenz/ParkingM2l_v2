@@ -18,7 +18,7 @@
               </h3>
             </a>
           <div class="clearfix">
-            <a class="btn btn-primary float-right" href="/rPlaces">Mes réservations&rarr;</a>
+            <a class="btn btn-primary float-right" href="/sMesReservations">Mes réservations&rarr;</a>
           </div>
           </div>
           <hr>

@@ -14,13 +14,20 @@
               <h2 class="post-title">
                 <i class="fa fa-chevron-right" style="color: red"></i> Vous souhaitez réserver une place dans le Parking de la M2L ?
               </h2>
-              <h3 class="post-subtitle">
-                Regarder les places actuellements disponibles !
-              </h3>
-            </a>
-          <div class="clearfix">
-            <a class="btn btn-primary float-right" href="/rPlaces">Places disponibles&rarr;</a>
-          </div>
+              @if(!Auth::guest())
+                <h3 class="post-subtitle">
+                  Regarder les places actuellements disponibles !
+                </h3>
+                </a>
+                <div class="clearfix">
+                  <a class="btn btn-primary float-right" href="/rPlaces">Places disponibles&rarr;</a>
+                </div>
+              @else 
+                <h3 class="post-subtitle">
+                  Veuillez tout d'abord vous identifier avant de pouvoir réserver une place ! 
+                </h3>
+              @endif
+
           </div>
           <hr>
           <a class="btn btn-primary float-left" href="/">&cularr; Retour</a>

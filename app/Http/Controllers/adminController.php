@@ -39,7 +39,7 @@ class adminController extends Controller
 
     public function UtilSupp($id)
     {
-        DB::table('places')->where('idUserReserve', $id)->update(['reserver' => 0, 'idPlaceReserve' => null]);
+        DB::table('places')->where('idUserReserve', $id)->update(['reserver' => 0, 'idUserReserve' => null]);
 
         DB::table('reservations')->where('id_users', $id)->delete();
 
