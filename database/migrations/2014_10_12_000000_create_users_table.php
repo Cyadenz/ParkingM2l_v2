@@ -26,6 +26,8 @@ class CreateUsersTable extends Migration
             $table->integer('rang')->nullable();
             $table->integer('idPlaceReserve')->nullable();
 
+            $table->boolean('Comptevalider')->default(0);
+
             $table->rememberToken();
             $table->timestamps();
         });

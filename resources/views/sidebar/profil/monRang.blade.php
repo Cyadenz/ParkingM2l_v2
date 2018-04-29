@@ -23,7 +23,12 @@
         <div class="post-preview">
             <a>
               <h3 class="post-subtitle">
-                Votre rang sur la file d'attente est actuellement : {{Auth::user()->rang}} sur {{$nbrRang}} personne(s).</h3>
+                @if(Auth::user()->rang != NULL)
+                  Votre rang sur la file d'attente est actuellement : {{Auth::user()->rang}} sur {{$nbrRang}} personne(s).
+                @else
+                  Vous n'êtes pas sur la file d'attente.
+                @endif
+              </h3>
             </a>
         </div><br/>
          <a class="btn btn-primary float-left" href="/sMonProfil">&cularr; Retour</a> 

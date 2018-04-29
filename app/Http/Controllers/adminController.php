@@ -49,6 +49,14 @@ class adminController extends Controller
         ->with('status', 'Suppresion éffectuée avec succès');
     } 
 
+    public function UtilVal($id)
+    {
+        user::findOrFail($id)->update(['Comptevalider' => 1]);
+
+        return redirect()->route('aUtils')
+        ->with('status', 'Compte validé avec succès');
+    } 
+
     public function Utilstore(Request $request ,$id)
     {
             $this->validate($request, [

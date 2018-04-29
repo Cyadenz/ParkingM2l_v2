@@ -20,6 +20,7 @@
                   <th>Téléphone</th>
                   <th>Inscrit le</th>
                   <th>Administrateur</th>
+                  <th>Compte validé</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -32,6 +33,7 @@
                   <th>Téléphone</th>
                   <th>Inscrit le</th>
                   <th>Administrateur</th>
+                  <th>Compte validé</th>
                   <th>Actions</th>
                 </tr>
               </tfoot>
@@ -46,11 +48,19 @@
                   <td><?php echo e($util->telephone); ?></td>
                   <td><?php echo e($util->created_at); ?></td>
                   <?php if($util->admin): ?>
-                  <td>Oui</td>
+                    <td>Oui</td>
                   <?php else: ?>
-                  <td>Non</td>
+                    <td>Non</td>
+                  <?php endif; ?>
+                  <?php if($util->Comptevalider): ?>
+                    <td>Oui</td>
+                  <?php else: ?>
+                    <td>Non</td>
                   <?php endif; ?>
                   <td>
+                      <?php if(!$util->Comptevalider): ?>
+                        <a href="<?php echo e(route('aUtilVal', $util->id)); ?>" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
+                      <?php endif; ?>
                       <a href="<?php echo e(route('aUtilSelect', $util->id)); ?>" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                       <a href="<?php echo e(route('aUtilSupp', $util->id)); ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
                   </td>

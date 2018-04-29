@@ -22,6 +22,7 @@ Route::get('/aUtilisateurs', 'adminController@Util')->name('aUtils');
 Route::get('/aUtilisateur/{id}', 'adminController@UtilSelect')->name('aUtilSelect');
 Route::post('/aUtilisateur/{id}','adminController@UtilStore')->name('aUtilStore');
 Route::get('/aUtilisateurSupp/{id}','adminController@UtilSupp')->name('aUtilSupp');
+Route::get('/aUtilisateurVal/{id}','adminController@UtilVal')->name('aUtilVal');
 
 Route::get('/aReservations', 'adminController@Reserv')->name('aReservs');
 

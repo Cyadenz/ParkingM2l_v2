@@ -13,12 +13,12 @@
           <?php if($nbrplacesR == 0 && is_null(Auth::user()->rang) && is_null(Auth::user()->idPlaceReserve)): ?>
             <div class="alert alert-warning alert-block">
               <button type="button" class="close" data-dismiss="alert">×</button> 
-              <strong>Il semblerait que toutes les places soient prises, voulez-vous passer en liste d'attente ? Dès qu'une place sera disponible elle vous sera automatiquement assignée, si oui cliquer <a href="/sRangPlus">ici</a></strong>
+              <strong><i class="fa fa-info-circle"></i> Il semblerait que toutes les places soient prises, voulez-vous passer en liste d'attente ? Dès qu'une place sera disponible elle vous sera automatiquement assignée, si oui cliquer <a href="/sRangPlus">ici</a></strong>
             </div>
           <?php elseif(!is_null(Auth::user()->idPlaceReserve)): ?>
             <div class="alert alert-warning alert-block">
               <button type="button" class="close" data-dismiss="alert">×</button> 
-              <strong>Vous avez réservé une place ! Vous ne pouvez pas en réserver une autre.</a></strong>
+              <strong><i class="fa fa-info-circle"></i> Vous avez réservé une place ! Vous ne pouvez pas en réserver une autre.</a></strong>
             </div>
           <?php endif; ?>
 

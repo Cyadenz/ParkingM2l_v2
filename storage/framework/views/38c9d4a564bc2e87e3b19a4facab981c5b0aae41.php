@@ -41,7 +41,7 @@
                             <div class="col-md-6 col-md-offset-4">
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" name="remember" <?php echo e(old('remember') ? 'checked' : ''); ?>> Remember Me
+                                        <input type="checkbox" name="remember" <?php echo e(old('remember') ? 'checked' : ''); ?>> Se souvenir de moi
                                     </label>
                                 </div>
                             </div>
@@ -54,7 +54,7 @@
                                 </a>
 
                                 <button type="submit" class="btn btn-primary">
-                                    Login&rarr;
+                                    Se connecter&rarr;
                                 </button>
                                 
                             </center></div>

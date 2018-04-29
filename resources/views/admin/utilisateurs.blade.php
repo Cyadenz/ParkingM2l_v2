@@ -23,6 +23,7 @@
                   <th>Téléphone</th>
                   <th>Inscrit le</th>
                   <th>Administrateur</th>
+                  <th>Compte validé</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -35,6 +36,7 @@
                   <th>Téléphone</th>
                   <th>Inscrit le</th>
                   <th>Administrateur</th>
+                  <th>Compte validé</th>
                   <th>Actions</th>
                 </tr>
               </tfoot>
@@ -49,11 +51,19 @@
                   <td>{{$util->telephone}}</td>
                   <td>{{$util->created_at}}</td>
                   @if($util->admin)
-                  <td>Oui</td>
+                    <td>Oui</td>
                   @else
-                  <td>Non</td>
+                    <td>Non</td>
+                  @endif
+                  @if($util->Comptevalider)
+                    <td>Oui</td>
+                  @else
+                    <td>Non</td>
                   @endif
                   <td>
+                      @if(!$util->Comptevalider)
+                        <a href="{{ route('aUtilVal', $util->id) }}" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
+                      @endif
                       <a href="{{ route('aUtilSelect', $util->id) }}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                       <a href="{{ route('aUtilSupp', $util->id) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
                   </td>
