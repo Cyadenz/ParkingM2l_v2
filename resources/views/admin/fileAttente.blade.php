@@ -55,7 +55,7 @@
         </div>
         <div class="card-footer small text-muted">Dernière mise à jour le : {{$updated}}</div>
       </div>
-          @if(session('status') && session('status') == 'Suppression éffectuée avec succès')
+          @if(session('status') && session('status') == 'Suppression effectuée avec succès')
             <div class="alert alert-danger alert-block">
               <button type="button" class="close" data-dismiss="alert">×</button> 
               <strong><i class="fa fa-times"></i> {{(session('status'))}}</strong>

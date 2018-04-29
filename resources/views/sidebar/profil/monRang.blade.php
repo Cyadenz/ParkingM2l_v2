@@ -8,12 +8,12 @@
         <h1><i class="fa fa-clock-o"></i> Mon rang</h1>
         <hr>
         <br/>
-          @if (session('status') && session('status') != 'Suppresion éffectuée avec succès')
+          @if (session('status') && session('status') != 'Suppression effectuée avec succès')
             <div class="alert alert-success alert-block">
               <button type="button" class="close" data-dismiss="alert">×</button> 
               <strong><i class="fa fa-check"></i> {{(session('status'))}}</strong>
             </div>
-          @elseif(session('status') && session('status') == 'Suppresion éffectuée avec succès')
+          @elseif(session('status') && session('status') == 'Suppression effectuée avec succès')
             <div class="alert alert-danger alert-block">
               <button type="button" class="close" data-dismiss="alert">×</button> 
               <strong><i class="fa fa-check"></i> {{(session('status'))}}</strong>

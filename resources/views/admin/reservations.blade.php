@@ -40,34 +40,36 @@
               </tfoot>
 
               <tbody>
-              @foreach($reservs as $reserv)
+              @foreach($joins as $join)
                 <tr>
-                  <td>{{$utils[(($reserv->id_users)-1)]->nom}}</td>
-                  <td>{{$utils[(($reserv->id_users)-1)]->prenom}}</td>
-                  <td>{{$utils[(($reserv->id_users)-1)]->email}}</td>
-                  <td>{{$reserv->id_place}}</td>
-                  @if($reserv->debutperiode == '1998-10-10')
+
+                  <td>{{$join->nom}}</td>
+                  <td>{{$join->prenom}}</td>
+                  <td>{{$join->email}}</td>
+
+                  <td>{{$join->id_place}}</td>
+                  @if($join->debutperiode == '1998-10-10')
                     <td><em>Non attribuée</em></td>
                   @else
-                    <td>{{$reserv->debutperiode}}</td>
+                    <td>{{$join->debutperiode}}</td>
                   @endif
 
-                  @if($reserv->finperiode == '1998-10-10')
+                  @if($join->finperiode == '1998-10-10')
                     <td><em>Non attribuée</em></td>
                   @else
-                    <td>{{$reserv->finperiode}}</td>
+                    <td>{{$join->finperiode}}</td>
                   @endif
 
-                  @if($reserv->valider)
+                  @if($join->valider)
                     <td>Oui</td>
                   @else
                     <td>Non</td>
                   @endif
                   <td>
-                    @if(!$reserv->valider)
-                      <a href="{{ route('aReservValidation', $reserv->id_place) }}" class="btn btn-primary btn-xs"><i class="fa fa-check"></i></a>
+                    @if(!$join->valider)
+                      <a href="{{ route('aReservValidation', $join->id_place) }}" class="btn btn-primary btn-xs"><i class="fa fa-check"></i></a>
                     @endif
-                      <a href="{{ route('aReservSupp', $reserv->id_place) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
+                      <a href="{{ route('aReservSupp', $join->id_place) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
                   </td>
                 </tr>
               @endforeach
@@ -75,14 +77,14 @@
             </table>
           </div>
         </div>
-        <div class="card-footer small text-muted">Dernière mise à jour le : {{$updated}}</div>
+        <div class="card-footer small text-muted">Dernière mise à jour le : 29/04/2018</div>
       </div>
-          @if (session('status') && session('status') != 'Suppresion éffectuée avec succès')
+          @if (session('status') && session('status') != 'Suppression effectuée avec succès')
             <div class="alert alert-success alert-block">
               <button type="button" class="close" data-dismiss="alert">×</button> 
               <strong><i class="fa fa-check"></i> {{(session('status'))}}</strong>
             </div>
-          @elseif(session('status') && session('status') == 'Suppresion éffectuée avec succès')
+          @elseif(session('status') && session('status') == 'Suppression effectuée avec succès')
             <div class="alert alert-danger alert-block">
               <button type="button" class="close" data-dismiss="alert">×</button> 
               <strong><i class="fa fa-check"></i> {{(session('status'))}}</strong>

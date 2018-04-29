@@ -72,12 +72,12 @@
         </div>
         <div class="card-footer small text-muted">Dernière mise à jour le : <?php echo e($updated); ?></div>
       </div>
-          <?php if(session('status') && session('status') != 'Suppresion éffectuée avec succès'): ?>
+          <?php if(session('status') && session('status') != 'Suppression effectuée avec succès'): ?>
             <div class="alert alert-success alert-block">
               <button type="button" class="close" data-dismiss="alert">×</button> 
               <strong><i class="fa fa-check"></i> <?php echo e((session('status'))); ?></strong>
             </div>
-          <?php elseif(session('status') && session('status') == 'Suppresion éffectuée avec succès'): ?>
+          <?php elseif(session('status') && session('status') == 'Suppression effectuée avec succès'): ?>
             <div class="alert alert-danger alert-block">
               <button type="button" class="close" data-dismiss="alert">×</button> 
               <strong><i class="fa fa-check"></i> <?php echo e((session('status'))); ?></strong>

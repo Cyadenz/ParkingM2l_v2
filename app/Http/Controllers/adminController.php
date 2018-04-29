@@ -46,7 +46,7 @@ class adminController extends Controller
         user::findOrFail($id)->delete();
 
         return redirect()->route('aUtils')
-        ->with('status', 'Suppresion éffectuée avec succès');
+        ->with('status', 'Suppression effectuée avec succès');
     } 
 
     public function UtilVal($id)
@@ -82,11 +82,12 @@ class adminController extends Controller
 
     public function Reserv()
     {
-        $reservs = reservations::all();
-        $utils = user::all();
-        $updated = DB::table('reservations')->select('updated_at')->max('updated_at');
+        $joins = DB::table('reservations')
+            ->join('users', 'reservations.id_users', '=', 'users.id')
+            ->select('*')
+            ->get();
 
-        return view('admin.reservations' , compact('reservs', 'utils' ,'updated'));
+        return view('admin.reservations' , compact('joins'));
     }
 
     public function ReservValidation($id_place)
@@ -122,7 +123,7 @@ class adminController extends Controller
         DB::table('reservations')->where('id_place', $id_place)->delete();
 
         return redirect()->route('aReservs')
-        ->with('status', 'Suppresion éffectuée avec succès');
+        ->with('status', 'Suppression effectuée avec succès');
     }
 
     public function Places()
@@ -154,7 +155,7 @@ class adminController extends Controller
         DB::table('places')->where('idplace', $idplace)->delete();
 
         return redirect()->route('aPlaces')
-        ->with('status', 'Suppresion éffectuée avec succès');
+        ->with('status', 'Suppression effectuée avec succès');
     } 
 
     public function FileAttente()

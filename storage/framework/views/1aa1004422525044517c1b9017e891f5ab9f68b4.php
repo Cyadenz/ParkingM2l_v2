@@ -38,34 +38,36 @@
               </tfoot>
 
               <tbody>
-              <?php $__currentLoopData = $reservs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $reserv): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+              <?php $__currentLoopData = $joins; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $join): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <tr>
-                  <td><?php echo e($utils[(($reserv->id_users)-1)]->nom); ?></td>
-                  <td><?php echo e($utils[(($reserv->id_users)-1)]->prenom); ?></td>
-                  <td><?php echo e($utils[(($reserv->id_users)-1)]->email); ?></td>
-                  <td><?php echo e($reserv->id_place); ?></td>
-                  <?php if($reserv->debutperiode == '1998-10-10'): ?>
+
+                  <td><?php echo e($join->nom); ?></td>
+                  <td><?php echo e($join->prenom); ?></td>
+                  <td><?php echo e($join->email); ?></td>
+
+                  <td><?php echo e($join->id_place); ?></td>
+                  <?php if($join->debutperiode == '1998-10-10'): ?>
                     <td><em>Non attribuée</em></td>
                   <?php else: ?>
-                    <td><?php echo e($reserv->debutperiode); ?></td>
+                    <td><?php echo e($join->debutperiode); ?></td>
                   <?php endif; ?>
 
-                  <?php if($reserv->finperiode == '1998-10-10'): ?>
+                  <?php if($join->finperiode == '1998-10-10'): ?>
                     <td><em>Non attribuée</em></td>
                   <?php else: ?>
-                    <td><?php echo e($reserv->finperiode); ?></td>
+                    <td><?php echo e($join->finperiode); ?></td>
                   <?php endif; ?>
 
-                  <?php if($reserv->valider): ?>
+                  <?php if($join->valider): ?>
                     <td>Oui</td>
                   <?php else: ?>
                     <td>Non</td>
                   <?php endif; ?>
                   <td>
-                    <?php if(!$reserv->valider): ?>
-                      <a href="<?php echo e(route('aReservValidation', $reserv->id_place)); ?>" class="btn btn-primary btn-xs"><i class="fa fa-check"></i></a>
+                    <?php if(!$join->valider): ?>
+                      <a href="<?php echo e(route('aReservValidation', $join->id_place)); ?>" class="btn btn-primary btn-xs"><i class="fa fa-check"></i></a>
                     <?php endif; ?>
-                      <a href="<?php echo e(route('aReservSupp', $reserv->id_place)); ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
+                      <a href="<?php echo e(route('aReservSupp', $join->id_place)); ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
                   </td>
                 </tr>
               <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -73,14 +75,14 @@
             </table>
           </div>
         </div>
-        <div class="card-footer small text-muted">Dernière mise à jour le : <?php echo e($updated); ?></div>
+        <div class="card-footer small text-muted">Dernière mise à jour le : 29/04/2018</div>
       </div>
-          <?php if(session('status') && session('status') != 'Suppresion éffectuée avec succès'): ?>
+          <?php if(session('status') && session('status') != 'Suppression effectuée avec succès'): ?>
             <div class="alert alert-success alert-block">
               <button type="button" class="close" data-dismiss="alert">×</button> 
               <strong><i class="fa fa-check"></i> <?php echo e((session('status'))); ?></strong>
             </div>
-          <?php elseif(session('status') && session('status') == 'Suppresion éffectuée avec succès'): ?>
+          <?php elseif(session('status') && session('status') == 'Suppression effectuée avec succès'): ?>
             <div class="alert alert-danger alert-block">
               <button type="button" class="close" data-dismiss="alert">×</button> 
               <strong><i class="fa fa-check"></i> <?php echo e((session('status'))); ?></strong>
