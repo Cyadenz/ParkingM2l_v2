@@ -78,7 +78,7 @@
           </div>
             <a class="btn btn-primary float-left" href="/rDashboard">&cularr; Retour</a>
             @if (Auth::user()->idPlaceReserve == NULL && $nbrplacesR != 0)
-              <a class="btn btn-primary float-right" href="/rTest">&cularr; Réserver</a>
+              <a class="btn btn-primary float-right" href="/rReservPlace">&cularr; Réserver</a>
             @endif
           </div>
 

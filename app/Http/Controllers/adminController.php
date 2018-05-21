@@ -10,6 +10,7 @@ use App\Reservations;
 use Auth;
 use DB;
 use App\Quotation;
+use Hash;
 
 class adminController extends Controller
 {
@@ -68,12 +69,18 @@ class adminController extends Controller
             'admin' => 'required|boolean',
         ]);
         $user = User::findorFail($id);
+
+        if (Hash::needsRehash($request->password))
+            $password = bcrypt($request->password);
+        else
+            $password = $request->password;
+
         $user -> update([
             'nom' => $request->nom,
             'prenom' => $request->prenom,
             'email' => $request->email,
             'telephone' => $request->telephone,
-            'password' => bcrypt($request->password),
+            'password' => $password,
             'admin' => $request->admin,
     ]);
         return redirect()->route('aUtils')

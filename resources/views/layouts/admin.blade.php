@@ -72,6 +72,9 @@ Administration
             <li>
               <a href="/aReservations">Réservations</a>
             </li>
+             <li>
+              <a href="/aFileAttente">Liste d'attente</a>
+            </li>
           </ul>
         </li>
 
@@ -84,7 +87,7 @@ Administration
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item dropdown">
+        <!-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fa fa-fw fa-envelope"></i>
             <span class="d-lg-none">Messages
@@ -134,7 +137,7 @@ Administration
               </span>
             </div>
           </form>
-        </li>
+        </li> -->
 
                <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">

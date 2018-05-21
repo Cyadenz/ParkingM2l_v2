@@ -1,5 +1,4 @@
 <?php $__env->startSection('content'); ?>
-
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
           <a href="#">Utilisateurs</a>
